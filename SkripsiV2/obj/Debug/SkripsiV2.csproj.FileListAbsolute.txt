@@ -1,0 +1,9 @@
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\bin\Debug\SkripsiV2.exe.config
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\bin\Debug\SkripsiV2.exe
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\bin\Debug\SkripsiV2.pdb
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.csprojResolveAssemblyReference.cache
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.Form1.resources
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.Properties.Resources.resources
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.csproj.GenerateResource.Cache
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.exe
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.pdb
