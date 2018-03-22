@@ -38,14 +38,14 @@ namespace SkripsiV2
 		private void readDictionary()
 		{
 
-			string fileName = "D:/dictionary1.txt";
+			string fileName = "soal.txt";
 			System.IO.StreamReader reader = new System.IO.StreamReader(fileName);
 			string str;
 
 			while (!string.ReferenceEquals((str = reader.ReadLine()), null))
 			{
 
-				string[] line = str.Split(";", true);
+				string[] line = str.Split("/", true);
 
 				dictionary[line[0].Trim()] = line[1].Trim();
 			}

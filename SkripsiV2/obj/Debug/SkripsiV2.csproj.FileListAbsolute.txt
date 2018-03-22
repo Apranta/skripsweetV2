@@ -7,3 +7,5 @@ C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debu
 C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.csproj.GenerateResource.Cache
 C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.exe
 C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.pdb
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\obj\Debug\SkripsiV2.home.resources
+C:\Users\Rezi Apriliansyah\OneDrive\TA REZI\Program\SkripsiV2\SkripsiV2\bin\Debug\soal.txt

@@ -12,23 +12,31 @@ namespace SkripsiV2
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        Grid grid;
+        WordsDic dic = new WordsDic();
+        List<string> words;
+        Generator gen;
+        int usedCount;
+        char[][] data;
+        int row, column;
+        String jawabanboard;
+        public Form1(int row , int column)
         {
             InitializeComponent();
+            this.row = row;
+            this.column = column;
+            grid = new Grid(row, column);
+            words = new List<string>(dic.Dictionary.Keys);
+            gen = new Generator(grid, words);
+            usedCount = gen.generate();
+            grid.show();
+            this.show();
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void show()
         {
-            Grid grid = new Grid(12, 12);
-            WordsDic dic = new WordsDic();
-
-            List<string> words = new List<string>(dic.Dictionary.Keys);
-
-            Generator gen = new Generator(grid, words);
-
-            int usedCount = gen.generate();
-            grid.show();
-
             Dictionary<int, List<string>> horizontalAnnex = gen.HorizontalAnnex;
             Dictionary<int, List<string>> verticalAnnex = gen.VerticalAnnex;
 
@@ -40,11 +48,56 @@ namespace SkripsiV2
             dataGridView1.ColumnCount = grid.MaxRows;
             dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = false;
+
+            for (int k = 0; k < this.row; k++)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[k].Height = 25;
+                dataGridView1.Columns[k].Width = 25;
+                ((DataGridViewTextBoxColumn)dataGridView1.Columns[k]).MaxInputLength = 1;
+            }
+            for (int p = 0; p < this.row; p++)
+            {
+                for (int a = 0; a < this.column; a++)
+                {
+                  
+                    if (grid.getValue(p,a) == ' ')
+                    {
+                        dataGridView1.Rows[p].Cells[a].ReadOnly = true;
+                        dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.Black;
+                        dataGridView1.Rows[p].Cells[a].Style.SelectionBackColor = Color.Black;
+                        dataGridView1[a, p].Value = "0";
+                    }
+                    else
+                        dataGridView1[a,p].Value = "";
+                }
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, List<string>> horizontalAnnex = gen.HorizontalAnnex;
+            Dictionary<int, List<string>> verticalAnnex = gen.VerticalAnnex;
+
+            Console.WriteLine("Used : ( " + usedCount + " / " + words.Count + " )");
+            Console.WriteLine("Horizontal annex :");
+            printAnnex(horizontalAnnex, dic);
+            Console.WriteLine("Vertical annex :");
+            printAnnex(verticalAnnex, dic);
+            dataGridView1.ColumnCount = grid.MaxRows;
+            dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = false;
 
             for (int k = 0; k < grid.MaxRows; k++)
             {
                 dataGridView1.Rows.Add();
-                //datagridview1.rows[i].height = 505 / tts_board.getlength(0);
+                dataGridView1.Rows[k].Height = 25;
+                dataGridView1.Columns[k].Width = 25;
             }
             Console.Write("Rows :  {0} \t Coloumns : {1}", grid.MaxRows, grid.MaxColumns);
             for (int p = 0; p < grid.MaxRows; p++)
@@ -54,7 +107,7 @@ namespace SkripsiV2
                     if (grid.getValue(p, a) == ' ')
                     {
                         dataGridView1.Rows[p].Cells[a].ReadOnly = true;
-                        dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.Black;
+                        //dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.Black;
                     }
                     else
                         dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.White;
@@ -81,6 +134,7 @@ namespace SkripsiV2
 
                 foreach (string word in annex[key])
                 {
+                    
                     Console.Write(dic.Dictionary[word] + " | ");
                 }
 
@@ -90,35 +144,45 @@ namespace SkripsiV2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dataGridView1.ColumnCount = 10;
-            dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 20);
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns[0].Name = "Product ID";
-            //dataGridView1.Columns[1].Name = "Product Name";
-            //dataGridView1.Columns[2].Name = "Product Price";
-
-            for (int k = 0; k < 10; k++)
+            bool benar = false;
+            for (int i = 0; i < this.row; i++)
             {
-                dataGridView1.Rows.Add();
-                //dataGridView1.Rows[i].Height = 505 / tts_board.GetLength(0);
-            }
-
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < this.column; j++)
                 {
-                    if (j % 2 == 0)
+                    jawabanboard = dataGridView1[j,i].Value.ToString();
+                    Console.WriteLine(jawabanboard);
+                    if (jawabanboard == "0")
                     {
-                        dataGridView1.Rows[i].Cells[j].ReadOnly = true;
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                        dataGridView1.Rows[i].Cells[j].Style.SelectionBackColor = Color.Black;
+                        continue;
+                    }
+                    else if (jawabanboard != Convert.ToString(grid.getValue(i, j)))
+                    {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                        benar = false;
                     }
                     else
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                    {
+                        benar = true;
+                    }
 
-                    dataGridView1.Rows[i].Cells[j].Value = "";
                 }
             }
+
+            if (benar)
+            {
+                MessageBox.Show("Anda Benar", "Selamat",
+                   MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            else
+            {
+                MessageBox.Show("Masih Ada Yang salah", "Warning",
+                   MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+        }
+
+        private void Mendatar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

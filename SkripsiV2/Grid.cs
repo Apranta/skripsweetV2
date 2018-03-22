@@ -14,8 +14,8 @@ namespace SkripsiV2
 		private char[][] matrix;
 		private int maxRows;
 		private int maxColumns;
-
-		public Grid(int maxRows, int maxColumns)
+        public String[,] data;
+        public Grid(int maxRows, int maxColumns)
 		{
 			this.maxRows = maxRows;
 			this.maxColumns = maxColumns;
@@ -100,17 +100,18 @@ namespace SkripsiV2
 			}
 		}
 
-        //public string[,] getAll()
-        //{
-        //    string[,] data = new string[maxRows, maxColumns];
-        //    for (int i = 0; i < maxRows; i++)
-        //    {
-        //        for (int j = 0; j < maxColumns; j++)
-        //        {
-        //            data[i,j] = (string)matrix[i][j];
-        //        }
-        //    }
-        //}
-	}
+        public String[,] getA()
+        {
+            for (int i = 0; i < maxRows; i++)
+            {
+                for (int j = 0; j < maxColumns; j++)
+                {
+                    Console.Write((matrix[i][j] == ' ' ? '-' : matrix[i][j]) + "\t");
+                }
+            }
+
+            return data;
+        }
+    }
 
 }
