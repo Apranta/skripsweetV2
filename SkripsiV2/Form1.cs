@@ -39,24 +39,46 @@ namespace SkripsiV2
         {
             Dictionary<int, List<string>> horizontalAnnex = gen.HorizontalAnnex;
             Dictionary<int, List<string>> verticalAnnex = gen.VerticalAnnex;
+            List<int> list = new List<int>(horizontalAnnex.Keys);
+            list = list.OrderBy(r => r).ToList();
+            mendatar.Items.Add("Koor \t Pertanyaan");
+            foreach (int key in list)
+            {
+                foreach (string word in horizontalAnnex[key])
+                {
+                    mendatar.Items.Add(key + "\t" + dic.Dictionary[word]);
+                }
+            }
+
+            List<int> list1 = new List<int>(verticalAnnex.Keys);
+            list1 = list1.OrderBy(r => r).ToList();
+            Menurun.Items.Add("Koor \t Pertanyaan");
+            foreach (int key in list1)
+            {
+                foreach (string word in verticalAnnex[key])
+                {
+                    Menurun.Items.Add(key + "\t" + dic.Dictionary[word]);
+                }
+            }
 
             Console.WriteLine("Used : ( " + usedCount + " / " + words.Count + " )");
-            Console.WriteLine("Horizontal annex :");
-            printAnnex(horizontalAnnex, dic);
-            Console.WriteLine("Vertical annex :");
-            printAnnex(verticalAnnex, dic);
-            dataGridView1.ColumnCount = grid.MaxRows;
+            wordCount.Text = "Used : ( " + usedCount + " / " + words.Count + " )";
+            dataGridView1.ColumnCount = this.column;
             dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.RowHeadersVisible = false;
+            //dataGridView1.ColumnHeadersVisible = false;
+            //dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AllowUserToAddRows = false;
 
             for (int k = 0; k < this.row; k++)
             {
+                
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[k].Height = 25;
-                dataGridView1.Columns[k].Width = 25;
+                dataGridView1.Rows[k].Height = 35;
+                dataGridView1.Columns[k].Width = 35;
                 ((DataGridViewTextBoxColumn)dataGridView1.Columns[k]).MaxInputLength = 1;
+                dataGridView1.Columns[k].HeaderText = k.ToString();
+                dataGridView1.Rows[k].HeaderCell.Value = k.ToString();
             }
             for (int p = 0; p < this.row; p++)
             {
@@ -67,7 +89,9 @@ namespace SkripsiV2
                     {
                         dataGridView1.Rows[p].Cells[a].ReadOnly = true;
                         dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.Black;
+                        dataGridView1.Rows[p].Cells[a].Style.ForeColor = Color.Black;
                         dataGridView1.Rows[p].Cells[a].Style.SelectionBackColor = Color.Black;
+                        dataGridView1.Rows[p].Cells[a].Style.SelectionForeColor = Color.Black;
                         dataGridView1[a, p].Value = "0";
                     }
                     else
@@ -131,10 +155,9 @@ namespace SkripsiV2
             {
 
                 Console.Write(key + " : ");
-
+                
                 foreach (string word in annex[key])
                 {
-                    
                     Console.Write(dic.Dictionary[word] + " | ");
                 }
 

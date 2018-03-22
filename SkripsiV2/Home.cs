@@ -19,7 +19,9 @@ namespace SkripsiV2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 frm2 = new Form1(10, 10);
+            int row = Convert.ToInt32(rows.Text);
+            int col = Convert.ToInt32(columns.Text);
+            Form1 frm2 = new Form1(row, col);
             frm2.Show();
             this.Hide();
         }
