@@ -1,7 +1,10 @@
-KTA/Kredit tanpa agunan.
-CAS/Mengisi aliran listrik.
-SIAPA/Kata untuk menanyakan nama orang.
-DAPAT/Mampu
-TENTU/Pasti.
-SEMALAM/Satu malam.
-PELAYAN/Orang yang melayani.
+DAN/Untuk menghubungkan dua perkataan, frasa atau ayat.
+DIA/Persona tunggal yg dibicarakan, di luar pembicara dan kawan bicara.
+LAPAR/Ingin makan.
+GAGAL/Tidak berhasil.
+BOSAN/Sudah tidak suka lagi karena sudah terlalu sering atau banyak.
+TEORI/Pendapat yang didasarkan pada penelitian dan penemuan, didukung oleh data dan argumentasi.
+PEMARAH/Orang yang lekas (mudah) marah.
+DANGKAL/Tidak dalam.
+PERATURAN/Tataan (petunjuk, kaidah, ketentuan) yang dibuat untuk mengatur.
+TERSENYUM/Tertawa dengan tidak bersuara.

@@ -1,10 +1,4 @@
-﻿//========================================================================
-// This conversion was produced by the Free Edition of
-// Java to C# Converter courtesy of Tangible Software Solutions.
-// Order the Premium Edition at https://www.tangiblesoftwaresolutions.com
-//========================================================================
-
-using System;
+﻿using System;
 
 namespace SkripsiV2
 {
@@ -19,9 +13,7 @@ namespace SkripsiV2
 		{
 			this.maxRows = maxRows;
 			this.maxColumns = maxColumns;
-
-//JAVA TO C# CONVERTER NOTE: The following call to the 'RectangularArrays' helper class reproduces the rectangular array initialization that is automatic in Java:
-//ORIGINAL LINE: matrix = new char[maxRows][maxColumns];
+            
 			matrix = RectangularArrays.ReturnRectangularCharArray(maxRows, maxColumns);
 
 			initialize();

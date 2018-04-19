@@ -1,10 +1,4 @@
-﻿//========================================================================
-// This conversion was produced by the Free Edition of
-// Java to C# Converter courtesy of Tangible Software Solutions.
-// Order the Premium Edition at https://www.tangiblesoftwaresolutions.com
-//========================================================================
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -52,7 +46,7 @@ namespace SkripsiV2
 			}
 
 			//initialization
-			string word = remainingWords[0];
+			string word = remainingWords[0].ToUpper();
 			WordCoordinate coordinate = new WordCoordinate(0,0,rnd.Next(2),0);
 			/*new WordCoordinate(rnd.nextInt(grid.getMaxRows()-word.length()),
 			        rnd.nextInt(grid.getMaxColumns()-word.length()),rnd.nextInt(2),0);*/
@@ -114,7 +108,7 @@ namespace SkripsiV2
 
 					for (int j = 0; j < grid.MaxColumns; j++)
 					{
-
+                        //tambahi disini untuk checker 
 						//horizontal
 						if (j - k >= 0 && ((j - k) + word.Length < grid.MaxColumns))
 						{

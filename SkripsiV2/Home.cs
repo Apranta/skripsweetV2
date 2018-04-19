@@ -25,5 +25,10 @@ namespace SkripsiV2
             frm2.Show();
             this.Hide();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

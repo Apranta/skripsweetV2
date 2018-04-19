@@ -2,12 +2,12 @@
 //	Copyright © 2007 - 2018 Tangible Software Solutions Inc.
 //	This class can be used by anyone provided that the copyright notice remains intact.
 //
-//	This class is used to convert some aspects of the Java String class.
+//	This class is used to convert some aspects of the C# String class.
 //-------------------------------------------------------------------------------------------
 internal static class StringHelper
 {
 	//----------------------------------------------------------------------------------
-	//	This method replaces the Java String.substring method when 'start' is a
+	//	This method replaces the C# String.substring method when 'start' is a
 	//	method call or calculated value to ensure that 'start' is obtained just once.
 	//----------------------------------------------------------------------------------
 	internal static string SubstringSpecial(this string self, int start, int end)
@@ -16,7 +16,7 @@ internal static class StringHelper
 	}
 
 	//------------------------------------------------------------------------------------
-	//	This method is used to replace calls to the 2-arg Java String.startsWith method.
+	//	This method is used to replace calls to the 2-arg C# String.startsWith method.
 	//------------------------------------------------------------------------------------
 	internal static bool StartsWith(this string self, string prefix, int toffset)
 	{
@@ -24,7 +24,7 @@ internal static class StringHelper
 	}
 
 	//------------------------------------------------------------------------------
-	//	This method is used to replace most calls to the Java String.split method.
+	//	This method is used to replace most calls to the C# String.split method.
 	//------------------------------------------------------------------------------
 	internal static string[] Split(this string self, string regexDelimiter, bool trimTrailingEmptyStrings)
 	{
@@ -51,7 +51,7 @@ internal static class StringHelper
 	}
 
 	//-----------------------------------------------------------------------------
-	//	These methods are used to replace calls to some Java String constructors.
+	//	These methods are used to replace calls to some C# String constructors.
 	//-----------------------------------------------------------------------------
 	internal static string NewString(sbyte[] bytes)
 	{
@@ -71,7 +71,7 @@ internal static class StringHelper
 	}
 
 	//--------------------------------------------------------------------------------
-	//	These methods are used to replace calls to the Java String.getBytes methods.
+	//	These methods are used to replace calls to the C# String.getBytes methods.
 	//--------------------------------------------------------------------------------
 	internal static sbyte[] GetBytes(this string self)
 	{

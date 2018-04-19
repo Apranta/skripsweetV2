@@ -103,46 +103,7 @@ namespace SkripsiV2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dictionary<int, List<string>> horizontalAnnex = gen.HorizontalAnnex;
-            Dictionary<int, List<string>> verticalAnnex = gen.VerticalAnnex;
-
-            Console.WriteLine("Used : ( " + usedCount + " / " + words.Count + " )");
-            Console.WriteLine("Horizontal annex :");
-            printAnnex(horizontalAnnex, dic);
-            Console.WriteLine("Vertical annex :");
-            printAnnex(verticalAnnex, dic);
-            dataGridView1.ColumnCount = grid.MaxRows;
-            dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.RowHeadersVisible = false;
-
-            for (int k = 0; k < grid.MaxRows; k++)
-            {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[k].Height = 25;
-                dataGridView1.Columns[k].Width = 25;
-            }
-            Console.Write("Rows :  {0} \t Coloumns : {1}", grid.MaxRows, grid.MaxColumns);
-            for (int p = 0; p < grid.MaxRows; p++)
-            {
-                for (int a = 0; a < grid.MaxColumns; a++)
-                {
-                    if (grid.getValue(p, a) == ' ')
-                    {
-                        dataGridView1.Rows[p].Cells[a].ReadOnly = true;
-                        //dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.Black;
-                    }
-                    else
-                        dataGridView1.Rows[p].Cells[a].Style.BackColor = Color.White;
-
-                    dataGridView1[p,a].Value = grid.getValue(p,a);
-
-                    Console.Write(p + '\t' + a);
-                    Console.WriteLine(grid.getValue(a, a));
-                }
-                Console.WriteLine();
-            }
+            this.Dispose();
         }
 
         private static void printAnnex(Dictionary<int, List<string>> annex, WordsDic dic)
@@ -172,8 +133,8 @@ namespace SkripsiV2
             {
                 for (int j = 0; j < this.column; j++)
                 {
-                    jawabanboard = dataGridView1[j,i].Value.ToString();
-                    Console.WriteLine(jawabanboard);
+                    jawabanboard = dataGridView1[j,i].Value.ToString().ToUpper();
+                    Console.Write(jawabanboard);
                     if (jawabanboard == "0")
                     {
                         continue;
@@ -183,12 +144,18 @@ namespace SkripsiV2
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
                         benar = false;
                     }
-                    else
+                    else if (jawabanboard == "")
                     {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                        benar = false;
+                    }
+                    else if(jawabanboard == Convert.ToString(grid.getValue(i, j)))
+                    {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                         benar = true;
                     }
-
                 }
+                Console.WriteLine();
             }
 
             if (benar)
